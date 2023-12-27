@@ -9,9 +9,9 @@ data class MiningCart(
 
 
 object MiningCartTable : Table() {
-    val id = integer("id").autoIncrement()
-    val orderId = integer("order_id").references(OrderTable.id).nullable()
-    val storageCapacity = integer("storageCapacity")
+    val id = integer("ID").autoIncrement()
+    val orderId = integer("ORDER_ID").references(OrderTable.id).nullable()
+    val storageCapacity = integer("STORAGE_CAPACITY")
 
     override val primaryKey = PrimaryKey(id)
 }

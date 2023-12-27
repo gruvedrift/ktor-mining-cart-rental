@@ -11,5 +11,6 @@ fun main(args: Array<String>) {
 fun Application.module() {
     DatabaseSingleton.init()
     configureTemplating()
-    configureRouting()
+    configureCartRouting()
+    configureOrderRouting()
 }

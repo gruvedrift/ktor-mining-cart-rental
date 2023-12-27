@@ -10,9 +10,9 @@ data class Order (
 )
 
 object OrderTable : Table() {
-    val id = integer("id").autoIncrement()
-    val picks = integer("picks")
-    val orderingCustomer = varchar("orderingCustomer", 128)
+    val id = integer("ID").autoIncrement()
+    val picks = integer("PICKS")
+    val orderingCustomer = varchar("ORDERING_CUSTOMER", 128)
 
     override val primaryKey = PrimaryKey(id)
 }

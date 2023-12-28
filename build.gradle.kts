@@ -20,7 +20,7 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
-// Task for build and run in one
+/* Custom task for build then run project */
 tasks.register("br"){
     dependsOn("build", "run")
 }

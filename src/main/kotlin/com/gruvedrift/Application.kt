@@ -14,3 +14,7 @@ fun Application.module() {
     configureCartRouting()
     configureOrderRouting()
 }
+
+// Lage en prod config
+// lage docker compose
+// Refactore ut init

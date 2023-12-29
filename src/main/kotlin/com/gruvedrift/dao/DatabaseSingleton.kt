@@ -11,14 +11,17 @@ import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransacti
 import org.jetbrains.exposed.sql.transactions.transaction
 
 /*
-* Read config from file like so
+* Read config from file with HOCON interface
 * */
 object DatabaseSingleton {
     fun init(){
 
-        val config = HoconApplicationConfig(ConfigFactory.load("application.conf"))
-        val driverClassName = config.property("ktor.storage.driverClassName").getString()
-        val jdbcURL = config.property("ktor.storage.jdbcURL").getString()
+        val environment = System.getProperty("app.environment") ?: ""
+        val configFileName = if (environment == "prod") "application-prod.conf" else "application.conf"
+        val config = HoconApplicationConfig(ConfigFactory.load(configFileName))
+
+        val driverClassName = config.property("storage.driverClassName").getString()
+        val jdbcURL = config.property("storage.jdbcURL").getString()
         val database = Database.connect(url = jdbcURL, driver = driverClassName)
 
         transaction(database) {
